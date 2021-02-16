@@ -22,17 +22,24 @@ html, body {
     justify-self: center;
 }
 
-.loginDv {
-    width: 400px;
+/* .singinDv {
+    width: 600px;
     height: 400px;
     border: 1px solid black;
     border-radius: 5px;
     margin: auto;
+    display: inline-block;
 
+} */
+
+:root{
+    --form-width: 600px;
+    --form-height: 400px
 }
+
 form.login {
-    width: 400px;
-    height: 400px;
+    width: var(--form-width);
+    height: var(--form-height);
     margin: auto;
     -moz-box-shadow: -32px 36px 23px -32px rgba(138,138,138,1);
     box-shadow: -12px 9px 26px 8px rgba(222,222,222,1);
@@ -80,4 +87,14 @@ form.login {
     text-decoration: none;
     outline: none;
 
+}
+
+.image {
+    width: 20rem;
+    height: 20rem;
+    /* display: inline-block; */
+}
+
+.Dvimage{
+    display: inline-block;
 }
