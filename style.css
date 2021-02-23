@@ -34,10 +34,22 @@ html, body {
 
 :root{
     --form-width: 600px;
-    --form-height: 400px
+    --form-height: auto;
 }
 
-form.login {
+.d-none{
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline-block{
+    display: inline-block;
+}
+
+form {
     width: var(--form-width);
     height: var(--form-height);
     margin: auto;
@@ -45,7 +57,12 @@ form.login {
     box-shadow: -12px 9px 26px 8px rgba(222,222,222,1);
     border-radius: 10px;
     padding-top: 1px;
+    display: flexbox;
 }
+
+/* .singinDv, .singupDv{
+    display: inherit;
+} */
 
 .flt{
     position: relative;
@@ -55,8 +72,13 @@ form.login {
 .mt-5{
     margin-top: 20px;
 }
+
 .mt-7{
     margin-top: 20px;
+}
+
+.mb-7 {
+    margin-bottom: 40px;
 }
 
 .btn{
@@ -92,9 +114,9 @@ form.login {
 .image {
     width: 20rem;
     height: 20rem;
-    /* display: inline-block; */
+    display: flex;
 }
 
 .Dvimage{
-    display: inline-block;
+   height: 100%;
 }
