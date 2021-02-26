@@ -17,45 +17,39 @@ formSingIn.addEventListener("submit", function(event) {
 
     var obj = {
         email : document.getElementById("emailsignin").value,
-        psw : document.getElementById("pswsignin").value
+        password : document.getElementById("pswsignin").value
     }
-
-    fetch("http://localhost:8080/MatcherAPI/MatcherAPI", {
+    //console.log(obj)
+    formSingIn.reset();
+    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",
-        headers: {"Content-Type": "aplication/json"},
-        mode: 'cors'
     }).then(function(response){
-        formSingUp.reset();
-        console.log(response);
-        response.json().then(console.log);        
+        if(response.status == 200){
+            window.location.href = "pages/tccmatcher.html";
+        }
+        var resp;
+        response.json().then(r => resp = r);
     });
-
 });
-
 
 formSingUp.addEventListener("submit", function (event) {
     event.preventDefault();
-
     var obj = {
-        firstname : document.getElementById("Fnamesignup").value,
-        lastname : document.getElementById("Lnamesignup").value,
+        firstName : document.getElementById("Fnamesignup").value,
+        lastName : document.getElementById("Lnamesignup").value,
         gender : document.getElementById("Gendersignup").value,
         email : document.getElementById("emailsignup").value,
-        password : document.getElementById("pswsignup").value
+        password : document.getElementById("pswsignup").value.hashCode()
     }
+    formSingUp.reset();
 
-    console.log(obj)
-
-    fetch("http://localhost:8080/MatcherAPI/MatcherAPI", {
+    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signup", {
         body: JSON.stringify(obj),
         method: "POST",
-        headers: {"Content-Type": "aplication/json"},
-        mode: 'cors'
     }).then(function(response){
-        formSingUp.reset();
         console.log(response);
-        response.json().then(console.log);        
+        response.json().then(console.log); 
     });
 });
 
@@ -89,6 +83,23 @@ linkchangeDivs.addEventListener("click", function changeDivs(){
         linkchangeDivs.innerHTML = "Doesn't have a account? Sign up.";
     }
 });
+
+
+
+
+//METODO PARA O HASH
+String.prototype.hashCode = function() {
+    var hash = 0;
+    if (this.length == 0) {
+        return hash;
+    }
+    for (var i = 0; i < this.length; i++) {
+        var char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+}
 
 // jdbc:mysql://klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ol7ykc3l2q20shm5
 // mysql://rmc1ij9324jguygi:ixe3cri31571dlv0@klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ol7ykc3l2q20shm5
