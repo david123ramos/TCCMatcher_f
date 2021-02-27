@@ -20,7 +20,7 @@ formSingUp.addEventListener("submit", function(event) {
         psw : document.getElementById("usersgi").value
     }
 
-    fetch("http://localhost:8080/MatcherAPI/MatcherAPI", {
+    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/MatcherAPI", {
         body: JSON.stringify(obj),
         method: "POST",
         headers: {"Content-Type": "aplication/json"},
