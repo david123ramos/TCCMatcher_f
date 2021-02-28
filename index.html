@@ -10,33 +10,81 @@
 <body>
 
     <div class="container">
-        <div class="r">
-            <div class="center">
-                <div class="mt-5">
-                    <div class="singinDv">
-                        <!-- <img class="image" src="/frontend/assets/purpleBalls.jpeg" alt="roxe"> -->
-                        <form action="" class="login" id="formSingIn">
+
+        <div class="r formWrapper">
+            <div class="col-6 p-0">
+                <h1 class="mtch">Matcher</h1>
+                <figure class="fg">
+                    <img class="image" src="assets/purpleBalls.jpeg" alt="roxe">
+                </figure>
+            </div>
+            <div class="col-6 p-0">
+                <div class="wrapper ">
+                    <!-- SING IN -->
+                    <div class="singinDv" id="singinDv">
+                        <form action="" class="" id="formSingIn">
                             <div class="flt">
-                                <div class="r">
-                                    <div class="center">
-                                        <div class="">
-                                            <label for="" class="lbltxt">Login</label><br>
-                                            <input class="inpt" type="text" name="usersgi" id="usersgi">
-                                        </div>
+                                <div class="r center">
+                                    <label for="" class="lbltxt">Email</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="email" name="emailsignin" id="emailsignin"> <!-- Email sing IN-->
+                                </div>
+                                <div class="r center mt-5">
+                                    <label for="" class="lbltxt">Password</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="password" name="pswsignin" id="pswsignin"> 
+                                </div>
+                            </div>
+                            <div class="r">
+                                <div class="center">
+                                    <div class="mt-5 mb-7">
+                                        <button type="submit" class="btn">Sign In</button>
                                     </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SING UP -->
+                    <div class="singupDv d-none" id="singupDv">
+                        <form action="" class="" id="formSingUp">
+                            <div class="flt">
+                                <div class="r center">
+                                    <label for="" class="lbltxt">First Name</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="text" name="Fnamesignup" id="Fnamesignup">
+                                </div>
+                                <div class="r center">
+                                    <label for="" class="lbltxt">Last Name</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="text" name="Lnamesignup" id="Lnamesignup"> 
+                                </div>
+                                <div class="r center">
+                                    <label for="" class="lbltxt">Gender</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="text" name="Gendersignup" id="Gendersignup">
+                                </div>
+                                <div class="r center ">
+                                    <label for="" class="lbltxt">Email</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="email" name="emailsignup" id="emailsignup"> 
+                                </div>
+                                <div class="r center ">
+                                    <label for="" class="lbltxt">Password</label><br>
+                                </div>
+                                <div class="r center">
+                                    <input class="inpt" type="password" name="pswsignup" id="pswsignup">
                                 </div>
                                 <div class="r">
                                     <div class="center">
-                                        <div class="mt-5">
-                                            <label for="" class="lbltxt">Password</label><br>
-                                            <input class="inpt" type="password" name="pswsgi" id="pswsgi">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="r">
-                                    <div class="center">
-                                        <div class="mt-5">
-                                            <button type="submit" class="btn">Sign In</button>
+                                        <div class="mt-5 mb-7">
+                                            <button type="submit" class="btn">Sign Up</button>
                                         </div>
                                     </div>
                                 </div>
@@ -49,8 +97,10 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
 
     <script src="main.js"></script>
