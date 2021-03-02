@@ -7,7 +7,7 @@ const formSingUp = document.getElementById("formSingUp");
 
 //var for Change Divs
 const linkchangeDivs = document.getElementById("signupLink");
-var isLogin = true; 
+var isLoginDiv = true; 
 const singInDiv = document.getElementById("singinDv");
 const singUpDiv = document.getElementById("singupDv");
 
@@ -26,10 +26,13 @@ formSingIn.addEventListener("submit", function(event) {
         method: "POST",
     }).then(function(response){
         if(response.status == 200){
-            window.location.href = "pages/tccmatcher.html";
+            var resp;
+            response.json().then(r => completSingIN(r));
+        }else {
+            console.log(response);
+            alert("Account not found.");
         }
-        var resp;
-        response.json().then(r => resp = r);
+
     });
 });
 
@@ -49,23 +52,27 @@ formSingUp.addEventListener("submit", function (event) {
         method: "POST",
     }).then(function(response){
         console.log(response);
-        response.json().then(console.log); 
+        if(response.status == 200){
+            alert("Account successfully created.");
+            linkchangeDivs.click();
+        }else {
+            alert("Account not created.");
+        }
     });
 });
 
 
-
-
-
-
-
+function completSingIN(user){
+    window.sessionStorage.setItem("user", JSON.stringify(user));
+    window.location.href = "pages/tccmatcher.html";
+}
 
 
 
 linkchangeDivs.addEventListener("click", function changeDivs(){
     
-    if(isLogin){
-        isLogin = false;
+    if(isLoginDiv){
+        isLoginDiv = false;
 
         singInDiv.classList.add("d-none");
         singInDiv.classList.remove("d-block");
@@ -74,7 +81,7 @@ linkchangeDivs.addEventListener("click", function changeDivs(){
         singUpDiv.classList.remove("d-none");
         linkchangeDivs.innerHTML = "Do you allready have an account? Sign in.";
     } else {
-        isLogin = true;
+        isLoginDiv = true;
         singUpDiv.classList.add("d-none");
         singUpDiv.classList.remove("d-block");
 
