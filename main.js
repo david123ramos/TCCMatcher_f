@@ -21,15 +21,15 @@ formSingIn.addEventListener("submit", function(event) {
     }
     //console.log(obj)
     formSingIn.reset();
-    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signin", {
+    fetch("http://9650083d52fd.ngrok.io/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
+        console.log(response);
         if(response.status == 200){
             var resp;
             response.json().then(r => completSingIN(r));
         }else {
-            console.log(response);
             alert("Account not found.");
         }
 
@@ -45,13 +45,16 @@ formSingUp.addEventListener("submit", function (event) {
         email : document.getElementById("emailsignup").value,
         password : document.getElementById("pswsignup").value.hashCode()
     }
+    console.log(obj);
     formSingUp.reset();
 
-    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signup", {
+    fetch("http://9650083d52fd.ngrok.io/MatcherAPI/signup", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
         console.log(response);
+        console.log(" ----------------- FON ------------------\n")
+        response.json().then(console.log);
         if(response.status == 200){
             alert("Account successfully created.");
             linkchangeDivs.click();

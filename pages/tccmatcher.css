@@ -3,6 +3,7 @@
 html, body {
     padding: 0;
     margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 :root{
@@ -43,16 +44,33 @@ form {
     text-align: center;
 }
 
+.pr-1{
+    padding-right: 5px;
+}
+
+.ml-1{
+    margin-left: 10px;
+}
+
+.mb-1 {
+    margin-bottom: 9px;
+}
+
 .mt-5{
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .mt-7{
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
 .mb-7 {
     margin-bottom: 40px;
+}
+
+.py-2{
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .btn{
@@ -64,6 +82,12 @@ form {
     color: white;
     font-size: medium;
     cursor: pointer;
+}
+
+.check-group{
+    display: inline-flexbox;
+    text-align: left;
+
 }
 
 .inpt{
@@ -124,8 +148,6 @@ form {
     padding: 0 !important;
 }
 
-
-
 * {
     box-sizing: border-box;
   }
@@ -178,15 +200,50 @@ form {
 }
 
 
-
-
 .container {
-    padding: 1rem 5rem;
+    padding: 0;
+    margin: auto;
+}
+
+.navbar {
+    padding: 0.3rem;
+    background-color: rgb(102, 138, 255);
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-title {
+    color: white;
+    font-size: 1.3rem;
+    font: bold;
+}
+
+.rouded-span {
+    display: inline-flex;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 100%;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.753);
 }
 
 .r {
-    justify-content: center;
+    justify-content: center !important;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 50px 0px 50px
 }
+
+.divForm {
+    background-color: rgba(105, 138, 230, 0.411);
+}
+
 .flex {
     display: flex;
     justify-content: center;
@@ -196,12 +253,6 @@ form {
     content: "";
     clear: both;
     display: table;
-}
-.mt-5{
-    margin-top: 25px;
-}
-.ml-5{
-    margin-left: 15px;
 }
 
 

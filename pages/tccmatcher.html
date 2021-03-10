@@ -9,11 +9,53 @@
 </head>
 <body>
     <div class="container">
+        <div class="navbar">
+            <div class="nav-item">  <!-- Left -->
+            </div>
+
+            <div class="nav-item"> <!-- Center -->
+                <span class="nav-title">TCC Matcher</span>
+            </div>
+
+            <div class="nav-item"> <!-- Right -->
+                <span class="rouded-span" id="userName"></span>
+            </div>
+        </div>
 
         <div class="r">
-            <div class="col-6 p-0">
-                Welcome <span id="user"></span>
+            <div class="col-8 mt-7 py-2 divForm">
+                <form action="" class="" id="complementForm">
+                    <div class="flt">
+                        <div class="r center">
+                            <label for="" class="lbltxt">Where do you teach?</label><br>
+                        </div>
+                        <div class="r center">
+                            <input class="inpt" type="text" name="institution" id="institution"> <!-- Email sing IN-->
+                        </div>
+                        <div class="r center mt-5">
+                            <label for="" class="lbltxt">What are your areas of interest?</label><br>
+                        </div>
+                        <div class="r center">
+                            <fieldset class="check-group">
+                                <legend class="mb-1">What are your areas of interest?</legend>              
+                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Machine Laerning"> <span class="pr-1">Machine Laerning</span>   
+                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Design"><span class="pr-1">Design</span><br>     
+                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Web Development"><span class="pr-1">Web Development</span>
+                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Mobile Development"><span class="pr-1">Mobile Development</span><br>
+                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="DevOps"><span class="pr-1">DevOps</span>       
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="r">
+                        <div class="center">
+                            <div class="mt-5 mb-7">
+                                <button type="submit" class="btn">finished</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+            
         </div>
 
     </div>
