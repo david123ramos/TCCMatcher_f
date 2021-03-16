@@ -20,8 +20,7 @@ formSingIn.addEventListener("submit", function(event) {
         password : document.getElementById("pswsignin").value
     }
     //console.log(obj)
-    formSingIn.reset();
-    fetch("http://9650083d52fd.ngrok.io/MatcherAPI/signin", {
+    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
@@ -32,6 +31,7 @@ formSingIn.addEventListener("submit", function(event) {
         }else {
             alert("Account not found.");
         }
+        formSingIn.reset();
 
     });
 });
@@ -48,7 +48,7 @@ formSingUp.addEventListener("submit", function (event) {
     console.log(obj);
     formSingUp.reset();
 
-    fetch("http://9650083d52fd.ngrok.io/MatcherAPI/signup", {
+    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signup", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){

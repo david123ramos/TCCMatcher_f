@@ -207,12 +207,32 @@ form {
 
 .navbar {
     padding: 0.3rem;
-    background-color: rgb(102, 138, 255);
+    background-color: #8a2be2;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+}
+
+.sub-navbar {
+    padding: 0.3rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#btn-signOut {
+    width: 5rem;
+    height: 1.7rem;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(238, 74, 74);
+    color: white;
+    font-size: medium;
+    cursor: pointer;
 }
 
 .nav-title {
@@ -240,7 +260,7 @@ form {
     padding: 10px 50px 0px 50px
 }
 
-.divForm {
+#divForm {
     background-color: rgba(105, 138, 230, 0.411);
 }
 
