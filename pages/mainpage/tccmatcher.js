@@ -7,7 +7,7 @@ var user;
 var btnSignOut = document.getElementById("btn-signOut");
 
 // Form
-var complementForm = document.getElementById("complementForm");
+var tccForm = document.getElementById("complementForm");
 
 var divForm = document.getElementById("divForm");
 
@@ -15,12 +15,11 @@ var divForm = document.getElementById("divForm");
 function apresentUserName(){
     user = JSON.parse(window.sessionStorage.getItem("user"));
     if (!user) {
-        window.location.href = "../index.html";
+        //window.location.href = "../index.html";
     }
     var navUserName = document.getElementById("userName");
     console.log(user);
     var name = user.firstName;
-    var tmp = name.split(" ");
 
     navUserName.innerHTML += user.firstName[0];
     navUserName.innerHTML += user.lastName[0];
@@ -33,7 +32,7 @@ function apresentUserName(){
     }
 }
 
-complementForm.addEventListener("submit", function(event) {
+tccForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     var areasOfInterest = document.getElementsByName("areasOfInterest");
@@ -70,7 +69,7 @@ complementForm.addEventListener("submit", function(event) {
         }else {
             alert("Error.");
         }
-        complementForm.reset();
+        tccForm.reset();
     });
 });
 

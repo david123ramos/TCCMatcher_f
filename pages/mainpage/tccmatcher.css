@@ -56,6 +56,11 @@ form {
     margin-bottom: 9px;
 }
 
+
+.mt-2{
+    margin-top: 20px;
+}
+
 .mt-5{
     margin-top: 25px;
 }
@@ -207,7 +212,7 @@ form {
 
 .navbar {
     padding: 0.3rem;
-    background-color: #8a2be2;
+    background-color: rgb(74, 126, 238);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -260,9 +265,10 @@ form {
     padding: 10px 50px 0px 50px
 }
 
-#divForm {
+#divcomplementForm {
     background-color: rgba(105, 138, 230, 0.411);
 }
+
 
 .flex {
     display: flex;
@@ -290,4 +296,28 @@ form {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
+}
+
+
+/*---------------------------- tcc css -------------------------------------------*/
+
+/* #divtccForm {
+ 
+} */
+
+.tcc-Form-btn {
+    background-color: rgb(74, 126, 238);
+}
+
+.btn-list-register {
+    width: auto;
+    word-wrap: break-word;
+    background-color: rgb(74, 126, 238);
+}
+
+#abstract {
+    max-height: 30rem;
+    min-height: 15rem;
+    max-width: 45rem;
+    min-width: 30rem;
 }

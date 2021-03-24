@@ -7,9 +7,9 @@ const formSingUp = document.getElementById("formSingUp");
 
 //var for Change Divs
 const linkchangeDivs = document.getElementById("signupLink");
-var isLoginDiv = true; 
-const singInDiv = document.getElementById("singinDv");
-const singUpDiv = document.getElementById("singupDv");
+var isRegisterDiv = true; 
+const divForm = document.getElementById("singinDv");
+const divList = document.getElementById("singupDv");
 
 
 formSingIn.addEventListener("submit", function(event) {
@@ -74,22 +74,22 @@ function completSingIN(user){
 
 linkchangeDivs.addEventListener("click", function changeDivs(){
     
-    if(isLoginDiv){
-        isLoginDiv = false;
+    if(isRegisterDiv){
+        isRegisterDiv = false;
 
-        singInDiv.classList.add("d-none");
-        singInDiv.classList.remove("d-block");
+        divForm.classList.add("d-none");
+        divForm.classList.remove("d-block");
 
-        singUpDiv.classList.add("d-block");
-        singUpDiv.classList.remove("d-none");
+        divList.classList.add("d-block");
+        divList.classList.remove("d-none");
         linkchangeDivs.innerHTML = "Do you allready have an account? Sign in.";
     } else {
-        isLoginDiv = true;
-        singUpDiv.classList.add("d-none");
-        singUpDiv.classList.remove("d-block");
+        isRegisterDiv = true;
+        divList.classList.add("d-none");
+        divList.classList.remove("d-block");
 
-        singInDiv.classList.remove("d-none");
-        singInDiv.classList.add("d-block");
+        divForm.classList.remove("d-none");
+        divForm.classList.add("d-block");
         linkchangeDivs.innerHTML = "Doesn't have a account? Sign up.";
     }
 });
