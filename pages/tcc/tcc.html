@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Accunt</title>
+    <link rel="stylesheet" href="../mainpage/tccmatcher.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="nav-item">
+                <!-- Left -->
+            </div>
+
+            <div class="nav-item">
+                <!-- Center -->
+                <span class="nav-title">TCC Matcher</span>
+            </div>
+
+            <div class="nav-item">
+                <!-- Right -->
+                <span class="rouded-span" id="userName"></span>
+            </div>
+        </div>
+        <div class="sub-navbar">
+            <div class="nav-item">
+                <!-- Left -->
+                <button id="btn-list-register" class="btn btn-list-register">List TCCs</button>
+            </div>
+
+            <div class="nav-item">
+                <!-- Center -->
+            </div>
+
+            <div class="nav-item">
+                <!-- Right -->
+                <button id="btn-signOut">Sign Out</button>
+            </div>
+        </div>
+
+        <div class="r">
+            <div class="col-8 mt-7 py-2" id="divtccForm">
+                <form action="" class="" id="tccForm">
+                    <div class="flt">
+                        <div class="r center mb-1">
+                            <h2 for="" class="h2">Register a new TCC</h2><br>
+                        </div>
+                        <div class="r center mt-5">
+                            <label for="" class="lbltxt">Title</label><br />
+                        </div>
+                        <div class="r center">
+                            <input class="inpt" maxlength="150" required type="text" name="title" id="title"><br />
+                        </div>
+                        <div class="r center mt-5">
+                            <label class="lbltxt">Key Words <small>(separated by commas)</small></label><br>
+                        </div>
+                        <div class="r center">
+                            <input class="inpt" required type="text" maxlength="150" name="keywords" id="keywords">
+                        </div>
+                        <div class="r center mt-5">
+                            <label for="" class="lbltxt">Abstract</label><br />
+                        </div>
+                        <div class="r center">
+                            <textarea class="" required name="abstract" maxlength="1400" id="abstract"></textarea><br />
+                        </div>
+
+                    </div>
+                    <div class="r">
+                        <div class="center">
+                            <div class="mt-5 mb-7">
+                                <button type="submit" class="btn tcc-Form-btn">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-7 mt-1 py-2 d-none" id="divList">
+                <h2>TCCs List</h2>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="tcc.js"></script>
+</body>
+
+</html>

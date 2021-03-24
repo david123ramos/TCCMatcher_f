@@ -56,6 +56,11 @@ form {
     margin-bottom: 9px;
 }
 
+
+.mt-2{
+    margin-top: 20px;
+}
+
 .mt-5{
     margin-top: 25px;
 }
@@ -223,7 +228,7 @@ form {
 
 .navbar {
     padding: 0.3rem;
-    background-color: #8a2be2;
+    background-color: rgb(74, 126, 238);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -283,6 +288,10 @@ form {
     background-color: rgba(212, 212, 212, 0.041);
     border: 1px solid rgba(92, 92, 92, 0.219);
 } 
+#divcomplementForm {
+    background-color: rgba(105, 138, 230, 0.411);
+}
+
 
 .flex {
     display: flex;
@@ -359,4 +368,22 @@ ul.ks-cboxtags li input[type="checkbox"] {
 }
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   border: 2px solid #e9a1ff;
+
+}
+
+.tcc-Form-btn {
+    background-color: rgb(74, 126, 238);
+}
+
+.btn-list-register {
+    width: auto;
+    word-wrap: break-word;
+    background-color: rgb(74, 126, 238);
+}
+
+#abstract {
+    max-height: 30rem;
+    min-height: 15rem;
+    max-width: 45rem;
+    min-width: 30rem;
 }
