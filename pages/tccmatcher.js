@@ -2,6 +2,19 @@ window.onload = function(){
     apresentUserName();
 }
 
+
+document.querySelectorAll("input[type='checkbox']").forEach(btn => {
+    btn.addEventListener("click", e => {
+        btn.classList.toggle("actived");
+    });
+});
+
+document.querySelector(".btn-finish").addEventListener("click", e => {
+    document.querySelector("#submit").click();
+});
+
+
+
 var user;
 
 var btnSignOut = document.getElementById("btn-signOut");
@@ -15,7 +28,7 @@ var divForm = document.getElementById("divForm");
 function apresentUserName(){
     user = JSON.parse(window.sessionStorage.getItem("user"));
     if (!user) {
-        window.location.href = "../index.html";
+       // window.location.href = "../index.html";
     }
     var navUserName = document.getElementById("userName");
     console.log(user);
@@ -36,7 +49,8 @@ function apresentUserName(){
 complementForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    var areasOfInterest = document.getElementsByName("areasOfInterest");
+    // var areasOfInterest = document.getElementsByName("areasOfInterest");
+    var areasOfInterest = document.querySelectorAll(".actived");
     var areasChecked = [];
 
     for (let i = 0; i < areasOfInterest.length; i++) {
@@ -46,11 +60,27 @@ complementForm.addEventListener("submit", function(event) {
     }
 
     if (areasChecked.length == 0){
-        alert("Choose some area.");
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Choose some area'
+        });
+
         return;
     }
 
-   var obj = {
+var obj = {
         id: user.id,
         token: user.token,
         institution: document.getElementById("institution").value,
@@ -82,3 +112,4 @@ btnSignOut.addEventListener("click", function(){
         window.location.href = "../index.html";
     }
 });
+

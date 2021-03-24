@@ -74,14 +74,25 @@ form {
 }
 
 .btn{
-    width: 5rem;
-    height: 2rem;
+    min-width: 5rem;
+    min-height: 2rem !important;
     border: none;
     border-radius: 3px;
-    background-color: rgba(141, 27, 255, 0.85);
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: medium;
     cursor: pointer;
+}
+
+.btn-finish{
+    color: white;
+    background-color: rgb(134, 51, 159) !important;
+    cursor: pointer;
+    padding: 1.5rem;
+    font-size: large;
+}
+
+.rouded-span button {
+    display :none;
 }
 
 .check-group{
@@ -91,18 +102,23 @@ form {
 }
 
 .inpt{
-    width: 70%;
-    height: 25px;
+    width: 100%;
+    height: 35px;
     margin-top: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.275);
+    border: none;
     border-radius: 5px;
     padding: 15px;
     font-family: 'Poppins', sans-serif;
+    background-color: rgba(136, 136, 136, 0.137);
+    color: rgb(49, 49, 49);
+    font-weight: bold;
 }
 
 .lbltxt{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    font-size: x-large;
+    text-decoration: dotted;
 }
 
 .lnk{
@@ -261,8 +277,12 @@ form {
 }
 
 #divForm {
-    background-color: rgba(105, 138, 230, 0.411);
-}
+    background-color: transparent;
+    border-radius: 16px;
+    box-shadow: -2px 3px 3px 3px  rgba(214, 214, 214, 0.329);
+    background-color: rgba(212, 212, 212, 0.041);
+    border: 1px solid rgba(92, 92, 92, 0.219);
+} 
 
 .flex {
     display: flex;
@@ -290,4 +310,53 @@ form {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
+}
+
+
+
+ul.ks-cboxtags {
+    list-style: none;
+    /* padding: 20px; */
+}
+ul.ks-cboxtags li{
+    display: inline;
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid rgb(90, 35, 107);
+    background-color: rgb(134, 51, 159);
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
 }

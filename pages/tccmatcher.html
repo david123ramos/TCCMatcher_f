@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Accunt</title>
+    <title>My Account</title>
     <link rel="stylesheet" href="tccmatcher.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <div class="container">
@@ -14,7 +15,7 @@
             </div>
 
             <div class="nav-item"> <!-- Center -->
-                <span class="nav-title">TCC Matcher</span>
+                <span class="nav-title"></span>
             </div>
 
             <div class="nav-item"> <!-- Right -->
@@ -44,24 +45,49 @@
                             <input class="inpt" required type="text" name="institution" id="institution"> <!-- Email sing IN-->
                         </div>
                         <div class="r center mt-5">
-                            <label for="" class="lbltxt">What are your areas of interest?</label><br>
+                            <div class="col-12">
+                                <span for="" class="lbltxt">What are your areas of interest?</span><br>
+                            </div>
                         </div>
                         <div class="r center">
-                            <fieldset class="check-group">
-                                <legend class="mb-1">What are your areas of interest?</legend>              
-                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Machine Laerning"> <span class="pr-1">Machine Laerning</span>   
-                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Design"><span class="pr-1">Design</span><br>     
-                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Web Development"><span class="pr-1">Web Development</span>
-                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Mobile Development"><span class="pr-1">Mobile Development</span><br>
-                                <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="DevOps"><span class="pr-1">DevOps</span>       
-                            </fieldset>
+
+                            <ul class="ks-cboxtags">
+                                <li>
+                                    <input type="checkbox" id="checkboxOne"     value="Machine Laerning">
+                                    <label for="checkboxOne">Machine Laerning</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkboxTwo"     value="Design">
+                                    <label for="checkboxTwo">Design</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkboxThree"   value="Web Development">
+                                    <label for="checkboxThree">Web Development</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkboxFour"    value="Mobile Development">
+                                    <label for="checkboxFour">Mobile Development</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkboxFive"    value="DevOps">
+                                    <label for="checkboxFive">DevOps</label>
+                                </li>
+                            </ul>
+                        <!-- 
+                            <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Machine Laerning"> <span class="pr-1">Machine Laerning</span>   
+                            <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Design"><span class="pr-1">Design</span><br>     
+                            <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Web Development"><span class="pr-1">Web Development</span>
+                            <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Mobile Development"><span class="pr-1">Mobile Development</span><br>
+                            <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="DevOps"><span class="pr-1">DevOps</span>       
+                        -->
                         </div>
                     </div>
                     <div class="r">
-                        <div class="center">
-                            <div class="mt-5 mb-7">
-                                <button type="submit" class="btn">Finished</button>
-                            </div>
+                        <div class="col-12 mt-1" align="end">
+                            <span class="rouded-span btn-finish">
+                                &#8250;
+                                <button type="submit" class="btn" id="submit">Finished</button>
+                            </span>
                         </div>
                     </div>
                 </form>
