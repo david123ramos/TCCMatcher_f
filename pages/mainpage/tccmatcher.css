@@ -3,12 +3,14 @@
 html, body {
     padding: 0;
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--font-family-sans-serif);
 }
 
 :root{
     --form-width: 600px;
     --form-height: auto;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 .d-none{
@@ -46,6 +48,10 @@ form {
 
 .pr-1{
     padding-right: 5px;
+}
+
+.pb-2{
+    padding-bottom: 10px;
 }
 
 .ml-1{
@@ -86,6 +92,12 @@ form {
     color: rgb(0, 0, 0);
     font-size: medium;
     cursor: pointer;
+    font: bold;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: rgb(74, 126, 238);
 }
 
 .btn-finish{
@@ -220,6 +232,14 @@ form {
     } */
 }
 
+.border {
+    border-radius: 1rem;
+    border: 1px solid black;
+}
+
+textarea{
+    font-size: large;
+}
 
 .container {
     padding: 0;
@@ -321,7 +341,31 @@ form {
     background: #888;
 }
 
-
+ul.kw-list {
+    list-style: none;
+}
+ul.kw-list li{
+    display: inline;
+}
+ul.kw-list li label{
+    display: inline-block;
+    border: 2px solid rgb(90, 35, 107);
+    background-color: rgb(134, 51, 159);
+    color: #fff;
+    transition: all .2s;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+    padding: 8px 12px;
+    cursor: pointer;
+}
 
 ul.ks-cboxtags {
     list-style: none;
@@ -373,6 +417,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
 .tcc-Form-btn {
     background-color: rgb(74, 126, 238);
+    color: white;
 }
 
 .btn-list-register {
