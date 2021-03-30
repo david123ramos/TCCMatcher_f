@@ -20,7 +20,7 @@ formSingIn.addEventListener("submit", function(event) {
         password : document.getElementById("pswsignin").value
     }
     //console.log(obj)
-    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signin", {
+    fetch("http://localhost:8080/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
@@ -48,7 +48,7 @@ formSingUp.addEventListener("submit", function (event) {
     console.log(obj);
     formSingUp.reset();
 
-    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/signup", {
+    fetch("http://localhost:8080/MatcherAPI/signup", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
@@ -67,7 +67,7 @@ formSingUp.addEventListener("submit", function (event) {
 
 function completSingIN(user){
     window.sessionStorage.setItem("user", JSON.stringify(user));
-    window.location.href = "pages/tccmatcher.html";
+    window.location.href = "pages/mainpage/tccmatcher.html";
 }
 
 

@@ -28,7 +28,7 @@ var divForm = document.getElementById("divForm");
 function apresentUserName(){
     user = JSON.parse(window.sessionStorage.getItem("user"));
     if (!user) {
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
     }
     var navUserName = document.getElementById("userName");
     console.log(user);
@@ -79,14 +79,17 @@ tccForm.addEventListener("submit", function(event) {
         return;
     }
 
-var obj = {
-        id: user.id,
-        token: user.token,
-        institution: document.getElementById("institution").value,
-        preferences: areasChecked
-    }
+    var obj = {
+            id: user.id,
+            token: user.token,
+            institution: document.getElementById("institution").value,
+            preferenceList: areasChecked
+        }
 
-    fetch("https://tccmatcher.herokuapp.com/MatcherAPI/user", {
+    console.log(obj);
+
+
+    fetch("http://localhost:8080/MatcherAPI/user", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
@@ -108,7 +111,7 @@ btnSignOut.addEventListener("click", function(){
 
     if(confirm) {
         window.sessionStorage.removeItem("user");
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
     }
 });
 
