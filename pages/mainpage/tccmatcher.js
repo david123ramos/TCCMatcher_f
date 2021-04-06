@@ -13,7 +13,7 @@ document.querySelector(".btn-finish").addEventListener("click", e => {
     document.querySelector("#submit").click();
 });
 
-const url = "http://localhost:8080/MatcherAPI";
+const url = "http://14efccae11ab.ngrok.io/MatcherAPI";
 
 var user;
 
@@ -42,11 +42,9 @@ function apresentUserName(){
     }
     var navUserName = document.getElementById("userName");
     console.log(user);
-    var name = user.firstName;
 
     navUserName.innerHTML += user.firstName[0];
     navUserName.innerHTML += user.lastName[0];
-
 
     navUserName.setAttribute("title", user.firstName +" "+ user.lastName + " ("+ user.email +")");
 

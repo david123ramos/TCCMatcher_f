@@ -341,6 +341,7 @@ textarea{
     background: #888;
 }
 
+/* para lista os tccs*/
 ul.kw-list {
     list-style: none;
 }
@@ -367,6 +368,8 @@ ul.kw-list li label{
     cursor: pointer;
 }
 
+
+/* para cadastrar os tccs*/
 ul.ks-cboxtags {
     list-style: none;
     /* padding: 20px; */
