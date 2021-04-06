@@ -1,41 +1,67 @@
 window.onload = function(){
     apresentUserName();
-    //getTCCs();
+    getTCCs();
+
+    
+    //Btns
+    btnSignOut = document.getElementById("btn-signOut");
+    btnRegisterTcc = document.getElementById("btnRegisterTcc");
+    btnListTcc = document.getElementById("btnListTcc");
+    btnListInterece = document.getElementById("btnListInterece");
+
+    btnSignOut.addEventListener ("click", function(){
+        var confirm = window.confirm("Do you want sign Out?");
+    
+        if(confirm) {
+            window.sessionStorage.removeItem("user");
+            window.location.href = "../../index.html";
+        }
+    });
+    
+    btnListInterece.addEventListener("click", function (){
+        setBlock(divListInterece);
+        setNone(divTccForm);
+        setNone(divTccList);
+    });
+    
+    btnListTcc.addEventListener("click", function (){
+        setBlock(divTccList);
+        setNone(divTccForm);
+        setNone(divListInterece);
+    });
+    
+    btnRegisterTcc.addEventListener("click", function (){
+        setBlock(divTccForm);
+        setNone(divListInterece);
+        setNone(divTccList);
+
+        document.querySelectorAll(".ks-cboxtagscadtcc input[type='checkbox']").forEach(btn => {
+            btn.addEventListener("click", e => {
+                btn.classList.toggle("actived");
+            });
+        });
+    
+    });
+
+    // Forms
+    tccForm = document.getElementById("tccForm");
+
+
+    //DIVS
+    divcomplementForm = document.getElementById("divcomplementForm");
+    divTccForm = document.getElementById("divtccForm");
+    divTccList = document.getElementById("divTccList");
+    divListInterece = document.getElementById('divListInterece');
 }
 
-document.querySelectorAll("input[type='checkbox']").forEach(btn => {
-    btn.addEventListener("click", e => {
-        btn.classList.toggle("actived");
-    });
-});
-
-document.querySelector(".btn-finish").addEventListener("click", e => {
-    document.querySelector("#submit").click();
-});
-
-const url = "http://localhost:8080/MatcherAPI";
+const url = "http://6f6a521409f7.ngrok.io/MatcherAPI";
 
 var user;
 
-//Btns
-var btnSignOut = document.getElementById("btn-signOut");
-var btnRegisterTcc = document.getElementById("btnRegisterTcc");
-var btnListTcc = document.getElementById("btnListTcc");
-var btnListInterece = document.getElementById("btnListInterece");
-
-// Forms
-var complementForm = document.getElementById("complementForm");
-var tccForm = document.getElementById("tccForm");
 
 
-//DIVS
-var divcomplementForm = document.getElementById("divcomplementForm");
-var divTccForm = document.getElementById("divtccForm");
-var divTccList = document.getElementById("divTccList");
-var divListInterece = document.getElementById('divListInterece');
+function apresentUserName() { 
 
-
-function apresentUserName(){
     user = JSON.parse(window.sessionStorage.getItem("user"));
     if (!user) {
         window.location.href = "../../index.html";
@@ -50,72 +76,98 @@ function apresentUserName(){
 
     navUserName.setAttribute("title", user.firstName +" "+ user.lastName + " ("+ user.email +")");
 
-    if (user.institution){
-        setNone(divcomplementForm);
+    if (user.institution == null || user.institution == undefined){
+        Swal.fire({ 
+            html: divcomplementForm.innerHTML,
+            showConfirmButton: false, 
+            allowOutsideClick: false,
+        
+        });
+
+        document.querySelectorAll(".ks-cboxtags input[type='checkbox']").forEach(btn => {
+            btn.addEventListener("click", e => {
+                btn.classList.toggle("actived");
+            });
+        });
+        
+        document.querySelector(".btn-finish").addEventListener("click", e => {
+            document.querySelector("#submit").click();
+        });
+        bindComplementForm();
     }
 }
 
-complementForm.addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    var areasOfInterest = document.querySelectorAll(".actived");
-    var areasChecked = [];
-
-    for (let i = 0; i < areasOfInterest.length; i++) {
-        if (areasOfInterest[i].checked) {
-            areasChecked.push({description: areasOfInterest[i].value});
-        }
-    }
-
-    if (areasChecked.length == 0){
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
+/**
+ * Responsável por cadastrar as informações auxiliares no primeiro login
+ */
+function bindComplementForm() {
+    const complementForm = document.getElementById("complementForm");
+    complementForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+    
+        var areasOfInterest = document.querySelectorAll(".actived");
+        var areasChecked = [];
+    
+        for (let i = 0; i < areasOfInterest.length; i++) {
+            if (areasOfInterest[i].checked) {
+                areasChecked.push({description: areasOfInterest[i].value});
             }
-        });
-
-        Toast.fire({
-            icon: 'error',
-            title: 'Choose some area'
-        });
-
-        return;
-    }
-
-    var obj = {
-            id: user.id,
-            token: user.token,
-            institution: document.getElementById("institution").value,
-            preferenceList: areasChecked
         }
-
-    console.log(obj);
-
-    fetch(url+"/user", {
-        body: JSON.stringify(obj),
-        method: "POST",
-    }).then(function(response){
-        if(response.status == 200){
-            alert("Added successfully.");
-            user.institution = obj.institution;
-            user.preferences = obj.preferences;
-            window.sessionStorage.setItem("user", JSON.stringify(user));
-            divcomplementForm.classList.add("d-none");
-        }else {
-            alert("Error.");
+    
+        if (areasChecked.length == 0){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'error',
+                title: 'Choose some area'
+            });
+    
+            return;
         }
-        complementForm.reset();
+    
+        var obj = {
+                id: user.id,
+                token: user.token,
+                institution: document.getElementById("institution").value,
+                preferenceList: areasChecked
+            }
+    
+        console.log(obj);
+    
+        fetch(url+"/user", {
+            body: JSON.stringify(obj),
+            method: "POST",
+        }).then(function(response){
+            if(response.status == 200){
+                alert("Added successfully.");
+                user.institution = obj.institution;
+                user.preferences = obj.preferences;
+                window.sessionStorage.setItem("user", JSON.stringify(user));
+                divcomplementForm.classList.add("d-none");
+                swal.close();
+            }else {
+                alert("Error.");
+            }
+            complementForm.reset();
+        });
     });
-});
+}
 
 
-tccForm.addEventListener("submit", function (event){
+tccForm.addEventListener("submit", function (event) {
+
+
     event.preventDefault();
     var areasOfInterest = document.querySelectorAll(".actived");
     var areasChecked = [];
@@ -151,7 +203,7 @@ tccForm.addEventListener("submit", function (event){
         title: document.getElementById("title").value,
         description: document.getElementById("abstract").value,
         keywords: areasChecked,
-        id: 'user.id'
+        id_user: user.id
     }
 
     console.log(obj);
@@ -163,7 +215,7 @@ tccForm.addEventListener("submit", function (event){
         if(response.status == 200){
             alert("Added successfully.");
             btnListTcc.click();
-            //getTCCs();
+            getTCCs();
         }else {
             alert("Error.");
         }
@@ -173,11 +225,12 @@ tccForm.addEventListener("submit", function (event){
 });
 
 function getTCCs (){
-    fetch(url+"/tcc", {
+    userid = user.id;
+    fetch(url+`/tcc?userid=${userid}`, {
         method: "GET",
     }).then(function(response){
         if(response.status == 200){
-            response.json().then(r => listTCCs(r));
+            response.json().then(listTCCs);
         }else {
             alert("Error ao resgatar TCCs");
         }
@@ -186,24 +239,24 @@ function getTCCs (){
 }
 
 function listTCCs (tccs){
-    var tccListdiv = document.getElementById("mytccListMain");
+    const tccListdiv = document.getElementById("mytccListMain");
+
+
+    if(tccs.length > 0) {
+        mountTccList(tccs, tccListdiv);  
+    }else { 
+        tccListdiv.innerHTML = `<h2>You doesn't have any TCC 😓</h2>`;
+    }
+
+
+}
+
+function mountTccList(tccs, tccListdiv) {
     tccListdiv.innerHTML = "";
-    // <div class="col-12 mt-1 mb-1 py-2 border">
-    //     <div class="center">
-    //         <h1>Title</h1>
-    //     </div>
-    //     <h3>Description</h3>
-    //     <div class="center">
-    //         <ul class="kw-list">
-    //             <li>
-    //                 <label class="keywords">Machine Laerning</label>
-    //             </li>
-    //         </ul>
-    //     </div>
-    // </div> 
+
     for (const iterator of tccs) {
         var col = document.createElement("div");
-        col.classList.add("col-12 mt-1 mb-1 py-2 border");
+        col.setAttribute("class", "col-12 mt-1 mb-1 py-2 border");
         var divcenter1 = document.createElement("div");
         divcenter1.classList.add("center");
         var h1 = document.createElement("h1");
@@ -235,35 +288,9 @@ function listTCCs (tccs){
         col.appendChild(divcenter2);
         tccListdiv.appendChild(col);
     } 
-
 }
 
-btnSignOut.addEventListener ("click", function(){
-    var confirm = window.confirm("Do you want sign Out?");
 
-    if(confirm) {
-        window.sessionStorage.removeItem("user");
-        window.location.href = "../../index.html";
-    }
-});
-
-btnListInterece.addEventListener("click", function (){
-    setBlock(divListInterece);
-    setNone(divTccForm);
-    setNone(divTccList);
-});
-
-btnListTcc.addEventListener("click", function (){
-    setBlock(divTccList);
-    setNone(divTccForm);
-    setNone(divListInterece);
-});
-
-btnRegisterTcc.addEventListener("click", function (){
-    setBlock(divTccForm);
-    setNone(divListInterece);
-    setNone(divTccList);
-});
 
 function setNone(element){
     element.classList.remove("d-block");
