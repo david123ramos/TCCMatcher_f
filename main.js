@@ -11,7 +11,7 @@ var isRegisterDiv = true;
 const divForm = document.getElementById("singinDv");
 const divList = document.getElementById("singupDv");
 
-const baseurl = "http://6f6a521409f7.ngrok.io";
+const baseurl = "http://localhost:8080";
 
 
 formSingIn.addEventListener("submit", function(event) {
@@ -28,7 +28,6 @@ formSingIn.addEventListener("submit", function(event) {
     }).then(function(response){
         console.log(response);
         if(response.status == 200){
-            var resp;
             response.json().then(r => completSingIN(r));
         }else {
             alert("Account not found.");

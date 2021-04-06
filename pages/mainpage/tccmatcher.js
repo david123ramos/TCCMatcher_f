@@ -54,7 +54,7 @@ window.onload = function(){
     divListInterece = document.getElementById('divListInterece');
 }
 
-const url = "http://6f6a521409f7.ngrok.io/MatcherAPI";
+const url = "http://localhost:8080/MatcherAPI";
 
 var user;
 
