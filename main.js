@@ -11,7 +11,8 @@ var isRegisterDiv = true;
 const divForm = document.getElementById("singinDv");
 const divList = document.getElementById("singupDv");
 
-const url = "http://14efccae11ab.ngrok.io/MatcherAPI";
+const baseurl = "http://6f6a521409f7.ngrok.io";
+
 
 formSingIn.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -21,7 +22,7 @@ formSingIn.addEventListener("submit", function(event) {
         password : document.getElementById("pswsignin").value
     }
     //console.log(obj)
-    fetch(url+"/signin", {
+    fetch(baseurl+"/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
@@ -49,7 +50,7 @@ formSingUp.addEventListener("submit", function (event) {
     console.log(obj);
     formSingUp.reset();
 
-    fetch(url+"/signup", {
+    fetch(baseurl+"/MatcherAPI/signup", {
         body: JSON.stringify(obj),
         method: "POST",
     }).then(function(response){
