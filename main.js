@@ -11,7 +11,7 @@ var isRegisterDiv = true;
 const divForm = document.getElementById("singinDv");
 const divList = document.getElementById("singupDv");
 
-const baseurl = "http://localhost:8080";
+const baseurl = "http://d79796f56c54.ngrok.io";
 
 
 formSingIn.addEventListener("submit", function(event) {
@@ -19,7 +19,7 @@ formSingIn.addEventListener("submit", function(event) {
 
     var obj = {
         email : document.getElementById("emailsignin").value,
-        password : document.getElementById("pswsignin").value
+        password : document.getElementById("pswsignin").value.hashCode()
     }
     //console.log(obj)
     fetch(baseurl+"/MatcherAPI/signin", {

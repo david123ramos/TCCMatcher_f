@@ -1,6 +1,7 @@
 window.onload = function(){
     apresentUserName();
     getTCCs();
+    getMatchs();
 
     
     //Btns
@@ -51,10 +52,10 @@ window.onload = function(){
     divcomplementForm = document.getElementById("divcomplementForm");
     divTccForm = document.getElementById("divtccForm");
     divTccList = document.getElementById("divTccList");
-    divListInterece = document.getElementById('divListInterece');
+    divListInterece = document.getElementById('divMatchs');
 }
 
-const url = "http://localhost:8080/MatcherAPI";
+const url = "http://d79796f56c54.ngrok.io/MatcherAPI";
 
 var user;
 
@@ -222,7 +223,7 @@ tccForm.addEventListener("submit", function (event) {
 
 });
 
-function getTCCs (){
+function getTCCs () {
     userid = user.id;
     fetch(url+`/tcc?userid=${userid}`, {
         method: "GET",
@@ -232,21 +233,17 @@ function getTCCs (){
         }else {
             alert("Error ao resgatar TCCs");
         }
-        tccForm.reset();
     });
 }
 
 function listTCCs (tccs){
     const tccListdiv = document.getElementById("mytccListMain");
 
-
     if(tccs.length > 0) {
         mountTccList(tccs, tccListdiv);  
     }else { 
         tccListdiv.innerHTML = `<h2>You doesn't have any TCC 😓</h2>`;
     }
-
-
 }
 
 function mountTccList(tccs, tccListdiv) {
@@ -254,17 +251,17 @@ function mountTccList(tccs, tccListdiv) {
 
     for (const iterator of tccs) {
         var col = document.createElement("div");
-        col.setAttribute("class", "col-12 mt-1 mb-1 py-2 border");
+        col.setAttribute("class", "col-8 mt-1 mb-2 py-2 border list");
         var divcenter1 = document.createElement("div");
         divcenter1.classList.add("center");
         var h1 = document.createElement("h1");
-        h1.innerHTML = iterator.title;
+        h1.innerText = iterator.title;
         
         divcenter1.appendChild(h1);
         col.appendChild(divcenter1);
 
         var h3 = document.createElement("h3");
-        h3.innerHTML = iterator.description;
+        h3.innerText = iterator.description;
         col.appendChild(h3);
         
         var divcenter2 = document.createElement("div");
@@ -274,9 +271,10 @@ function mountTccList(tccs, tccListdiv) {
         
         for (const i of iterator.keywords) {
             var li = document.createElement("li");
+            li.classList.add("ml-1");
             var label = document.createElement("label");
             label.classList.add("keywords");
-            label.innerHTML = i.title;
+            label.innerText = i.title;
 
             li.appendChild(label);
             ul.appendChild(li);
@@ -288,6 +286,68 @@ function mountTccList(tccs, tccListdiv) {
     } 
 }
 
+// GET MATCHS
+function getMatchs () {
+    userid = user.id;
+    fetch(url+`/tcc?userid=${userid}&match=1`, {
+        method:"GET",
+    }).then(function(response){
+        if(response.status == 200){
+            response.json().then(listMatchs);
+        }else {
+            alert("Error ao resgatar TCCs");
+        }
+    });
+}
+
+function listMatchs (obj){
+    const matchDiv = document.getElementById("divMatchsMains");
+
+    for (let index = 0; index < obj.matchedTccs.length; index++) {
+        if (obj.matchedTccs[index].id === user.id) obj.matchedTccs.splice(index, 1);
+    }
+
+    console.log(obj)
+    if(obj.matchedTccs.length > 0) {
+        mountMatchList(obj, matchDiv);  
+    }else { 
+        matchDiv.innerHTML = `<h2>You doesn't have any Match 😓</h2>`;
+    }
+}
+
+function mountMatchList(obj, matchDiv) {
+    matchDiv.innerHTML = "";
+
+//     <div class="col-8 mt-1 mb-1 py-2 border list">
+//     <div class="center">
+//         <h1>Title</h1>
+//     </div>
+//     <h2>Abstract</h2>
+
+//     <h4>Supervisor: Nome do Prefessor<br>Email: Email@email.com</h4>
+// </div>
+    for (const iterator of obj.matchedTccs) {
+        var col = document.createElement("div");
+        col.setAttribute("class", "col-8 mt-1 mb-1 py-2 border list");
+        var divcenter1 = document.createElement("div");
+        divcenter1.classList.add("center");
+        var h1 = document.createElement("h1");
+        h1.innerText = iterator.tcc.title;
+        
+        divcenter1.appendChild(h1);
+        col.appendChild(divcenter1);
+
+        var h2 = document.createElement("h2");
+        h2.innerText = iterator.tcc.description;
+        col.appendChild(h2);
+
+        var h4 = document.createElement("h4");
+        h4.innerHTML = `Supervisor: ${iterator.firstName} ${iterator.lastName} <br>Email: ${iterator.email}`
+        col.appendChild(h4);
+   
+        matchDiv.appendChild(col);
+    } 
+}
 
 
 function setNone(element){

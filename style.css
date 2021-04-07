@@ -21,10 +21,12 @@ html, body {
 .d-inline-block{
     display: inline-block;
 }
+
 .formWrapper {
     box-shadow: -12px 9px 26px 8px rgba(222,222,222,1);
     border-radius: 10px;
 }
+
 form {
     /* width: var(--form-width); */
     height: var(--form-height);

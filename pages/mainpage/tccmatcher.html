@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-Br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,69 +9,76 @@
     <link rel="stylesheet" href="tccmatcher.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
-            <div class="nav-item">  <!-- Left -->
+            <div class="nav-item">
+                <!-- Left -->
             </div>
 
-            <div class="nav-item"> <!-- Center -->
+            <div class="nav-item">
+                <!-- Center -->
                 <span class="nav-title"></span>
             </div>
 
-            <div class="nav-item"> <!-- Right -->
+            <div class="nav-item">
+                <!-- Right -->
                 <span class="rouded-span" id="userName"></span>
             </div>
         </div>
         <div class="sub-navbar">
-            <div class="nav-item">  <!-- Left -->
+            <div class="nav-item">
+                <!-- Left -->
             </div>
 
-            <div class="nav-item"> <!-- Center -->
+            <div class="nav-item">
+                <!-- Center -->
             </div>
 
-            <div class="nav-item"> <!-- Right -->
+            <div class="nav-item">
+                <!-- Right -->
                 <button id="btn-signOut">Sign Out</button>
             </div>
         </div>
 
         <div class="r center">
             <div class="col-12 mt-1">
-                <button id="btnRegisterTcc" class="btn btn-primary">Register a new TCC</button>
-                <button id="btnListTcc" class="btn btn-primary ml-1">My TCC list</button>
-                <button id="btnListInterece" class="ml-1 btn btn-primary">TCCs of my interece</button>
+                <button id="btnRegisterTcc" class="btn btn-options">New TCC</button>
+                <button id="btnListTcc" class="btn btn-options ml-1">My TCCs</button>
+                <button id="btnListInterece" class="ml-1 btn btn-options">Matchs</button>
             </div>
             <div class="col-12 mt-1 py-2 d-none" id="divtccForm">
-                <form action="" class="border pb-2" id="tccForm">
+                <form action="" class="border pb-2 list" id="tccForm">
                     <div class="flt">
                         <div class="r center mt-5">
                             <label for="" class="lbltxt">Title</label><br />
                         </div>
                         <div class="r center">
-                            <input class="inpt" maxlength="150" required type="text" name="title" id="title"><br />
+                            <input class="inpt" maxlength="200" required type="text" name="title" id="title"><br />
                         </div>
                         <div class="r center mt-5">
-                        
+
                             <ul class="ks-cboxtagscadtcc">
                                 <li>
-                                    <input type="checkbox" id="checkboxOne"     value="Machine Laerning">
-                                    <label for="checkboxOne">Machine Laerning</label>
+                                    <input type="checkbox" id="checkboxOne1" value="Machine Laerning">
+                                    <label for="checkboxOne1">Machine Laerning</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxTwo"     value="Design">
-                                    <label for="checkboxTwo">Design</label>
+                                    <input type="checkbox" id="checkboxTwo2" value="Design">
+                                    <label for="checkboxTwo2">Design</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxThree"   value="Web Development">
-                                    <label for="checkboxThree">Web Development</label>
+                                    <input type="checkbox" id="checkboxThree3" value="Web Development">
+                                    <label for="checkboxThree3">Web Development</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxFour"    value="Mobile Development">
-                                    <label for="checkboxFour">Mobile Development</label>
+                                    <input type="checkbox" id="checkboxFour4" value="Mobile Development">
+                                    <label for="checkboxFour4">Mobile Development</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxFive"    value="DevOps">
-                                    <label for="checkboxFive">DevOps</label>
+                                    <input type="checkbox" id="checkboxFive5" value="DevOps">
+                                    <label for="checkboxFive5">DevOps</label>
                                 </li>
                             </ul>
 
@@ -79,12 +87,12 @@
                             <label for="" class="lbltxt">Abstract</label><br />
                         </div>
                         <div class="r center">
-                            <textarea class="" required name="abstract" maxlength="2400" id="abstract"></textarea><br />
+                            <textarea class="" required name="abstract" maxlength="200" id="abstract"></textarea><br />
                         </div>
                         <div class="r">
                             <div class="center">
                                 <div class="mt-5 mb-7">
-                                    <button type="submit" class="btn tcc-Form-btn">Create</button>
+                                    <button type="submit" class="btn btn-options">Create</button>
                                 </div>
                             </div>
                         </div>
@@ -93,13 +101,11 @@
             </div>
 
             <div class="col-12 mt-1 py-2" id="divTccList">
-                <div class="r py-2" id="mytccListMain"></div> 
+                <div class="r py-2" id="mytccListMain"></div>
             </div>
 
-            <div class="col-12 mt-1 py-2 d-none" id="divListInterece">
-                <h1>TCCs of my interece</h1>
-                <div class="r py-2" id="MyInterece">
-                                    
+            <div class="col-12 mt-1 py-2 d-none" id="divMatchs">
+                <div class="r py-2" id="divMatchsMains">
                 </div>
             </div>
 
@@ -110,7 +116,8 @@
                             <label for="" class="lbltxt">Where do you teach?</label><br>
                         </div>
                         <div class="r center">
-                            <input class="inpt" required type="text" name="institution" id="institution"> <!-- Email sing IN-->
+                            <input class="inpt" required type="text" name="institution" id="institution">
+                            <!-- Email sing IN-->
                         </div>
                         <div class="r center mt-5">
                             <div class="col-12">
@@ -121,27 +128,27 @@
 
                             <ul class="ks-cboxtags">
                                 <li>
-                                    <input type="checkbox" id="checkboxOne"     value="Machine Laerning">
+                                    <input type="checkbox" id="checkboxOne" value="Machine Laerning">
                                     <label for="checkboxOne">Machine Laerning</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxTwo"     value="Design">
+                                    <input type="checkbox" id="checkboxTwo" value="Design">
                                     <label for="checkboxTwo">Design</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxThree"   value="Web Development">
+                                    <input type="checkbox" id="checkboxThree" value="Web Development">
                                     <label for="checkboxThree">Web Development</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxFour"    value="Mobile Development">
+                                    <input type="checkbox" id="checkboxFour" value="Mobile Development">
                                     <label for="checkboxFour">Mobile Development</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="checkboxFive"    value="DevOps">
+                                    <input type="checkbox" id="checkboxFive" value="DevOps">
                                     <label for="checkboxFive">DevOps</label>
                                 </li>
                             </ul>
-                        <!-- 
+                            <!-- 
                             <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Machine Laerning"> <span class="pr-1">Machine Laerning</span>   
                             <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Design"><span class="pr-1">Design</span><br>     
                             <input class="ml-1 mb-1" type="checkbox" name="areasOfInterest" value="Web Development"><span class="pr-1">Web Development</span>
@@ -160,10 +167,11 @@
                     </div>
                 </form>
             </template>
-            
+
         </div>
 
     </div>
     <script src="tccmatcher.js"></script>
 </body>
+
 </html>
