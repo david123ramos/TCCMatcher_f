@@ -55,7 +55,7 @@ window.onload = function(){
     divListInterece = document.getElementById('divMatchs');
 }
 
-const url = "http://d79796f56c54.ngrok.io/MatcherAPI";
+const url = "http://91fca3f8ac45.ngrok.io/MatcherAPI";
 
 var user;
 
