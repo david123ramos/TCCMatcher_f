@@ -21,7 +21,7 @@ formSingIn.addEventListener("submit", function(event) {
         email : document.getElementById("emailsignin").value,
         password : document.getElementById("pswsignin").value.hashCode()
     }
-    //console.log(obj)
+    console.log(obj)
     fetch(baseurl+"/MatcherAPI/signin", {
         body: JSON.stringify(obj),
         method: "POST",

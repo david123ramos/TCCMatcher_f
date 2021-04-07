@@ -1,9 +1,7 @@
 window.onload = function(){
     apresentUserName();
     getTCCs();
-    getMatchs();
 
-    
     //Btns
     btnSignOut = document.getElementById("btn-signOut");
     btnRegisterTcc = document.getElementById("btnRegisterTcc");
@@ -20,6 +18,7 @@ window.onload = function(){
     });
     
     btnListInterece.addEventListener("click", function (){
+        getMatchs();
         setBlock(divListInterece);
         setNone(divTccForm);
         setNone(divTccList);
